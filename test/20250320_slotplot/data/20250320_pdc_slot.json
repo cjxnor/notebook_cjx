@@ -1,0 +1,700 @@
+{
+ "timestamp": "20250320161707706",
+ "pdc_psolt_id": 0,
+ "pcd_psolt_latreftype": "LatRefType_Unknow",
+ "pcd_psolt_slottype": "Parallel",
+ "obj1start_pos": {
+  "x": -8.74,
+  "y": 1.06,
+  "point_status": "Real"
+ },
+ "obj1end_pos": {
+  "x": -8.74,
+  "y": 1.06,
+  "point_status": "Real"
+ },
+ "slotobjstartpt_pos": {
+  "x": -8.67,
+  "y": 3.25,
+  "point_status": "Real"
+ },
+ "slotobjendpt_pos": {
+  "x": -1.59,
+  "y": 3.22,
+  "point_status": "Real"
+ },
+ "obj2start_pos": {
+  "x": -1.58,
+  "y": 1.03,
+  "point_status": "Virtual"
+ },
+ "obj2end_pos": {
+  "x": -1.58,
+  "y": 1.03,
+  "point_status": "Virtual"
+ },
+ "psolt_synctimestamp": 933393,
+ "stop_block_start_pose": {
+  "x": -30.73,
+  "y": 30.73,
+  "point_status": "Real"
+ },
+ "stop_block_end_pose": {
+  "x": -30.73,
+  "y": 30.73,
+  "point_status": "Real"
+ },
+ "PDC_PSolt_attribute_Status": 2
+}
+
+
+{
+ "timestamp": "20250320161909675",
+ "pdc_psolt_id": 0,
+ "pcd_psolt_latreftype": "LatRefType_Unknow",
+ "pcd_psolt_slottype": "Parallel",
+ "obj1start_pos": {
+  "x": -10.21,
+  "y": 2.67,
+  "point_status": "Real"
+ },
+ "obj1end_pos": {
+  "x": -6.78,
+  "y": 2.64,
+  "point_status": "Real"
+ },
+ "slotobjstartpt_pos": {
+  "x": -6.63,
+  "y": 5.03,
+  "point_status": "Real"
+ },
+ "slotobjendpt_pos": {
+  "x": 0,
+  "y": 4.62,
+  "point_status": "Real"
+ },
+ "obj2start_pos": {
+  "x": -0.13,
+  "y": 2.31,
+  "point_status": "Virtual"
+ },
+ "obj2end_pos": {
+  "x": -0.13,
+  "y": 2.31,
+  "point_status": "Virtual"
+ },
+ "psolt_synctimestamp": 951815,
+ "stop_block_start_pose": {
+  "x": -30.73,
+  "y": 30.73,
+  "point_status": "Real"
+ },
+ "stop_block_end_pose": {
+  "x": -30.73,
+  "y": 30.73,
+  "point_status": "Real"
+ },
+ "PDC_PSolt_attribute_Status": 1
+}
+
+
+{
+ "timestamp": "20250320171535806",
+ "pdc_psolt_id": 0,
+ "pcd_psolt_latreftype": "LatRefType_Unknow",
+ "pcd_psolt_slottype": "Parallel",
+ "obj1start_pos": {
+  "x": -13.08,
+  "y": -2.15,
+  "point_status": "Real"
+ },
+ "obj1end_pos": {
+  "x": -9.85,
+  "y": -2.17,
+  "point_status": "Real"
+ },
+ "slotobjstartpt_pos": {
+  "x": -9.9,
+  "y": -4.41,
+  "point_status": "Real"
+ },
+ "slotobjendpt_pos": {
+  "x": -3.75,
+  "y": -4.52,
+  "point_status": "Real"
+ },
+ "obj2start_pos": {
+  "x": -3.71,
+  "y": -2.29,
+  "point_status": "Virtual"
+ },
+ "obj2end_pos": {
+  "x": -3.71,
+  "y": -2.29,
+  "point_status": "Virtual"
+ },
+ "psolt_synctimestamp": 1474053,
+ "stop_block_start_pose": {
+  "x": -30.73,
+  "y": 30.73,
+  "point_status": "Real"
+ },
+ "stop_block_end_pose": {
+  "x": -30.73,
+  "y": 30.73,
+  "point_status": "Real"
+ },
+ "PDC_PSolt_attribute_Status": 1
+}
+
+
+{
+ "timestamp": "20250320172208914",
+ "pdc_psolt_id": 7,
+ "pcd_psolt_latreftype": "LatRefType_Unknow",
+ "pcd_psolt_slottype": "Perpendicular",
+ "obj1start_pos": {
+  "x": -10.41,
+  "y": -1.62,
+  "point_status": "Real"
+ },
+ "obj1end_pos": {
+  "x": -8.98,
+  "y": -1.8,
+  "point_status": "Real"
+ },
+ "slotobjstartpt_pos": {
+  "x": -9.66,
+  "y": -7.03,
+  "point_status": "Virtual"
+ },
+ "slotobjendpt_pos": {
+  "x": -5.69,
+  "y": -7.55,
+  "point_status": "Virtual"
+ },
+ "obj2start_pos": {
+  "x": -5.01,
+  "y": -2.32,
+  "point_status": "Virtual"
+ },
+ "obj2end_pos": {
+  "x": -5.01,
+  "y": -2.32,
+  "point_status": "Virtual"
+ },
+ "psolt_synctimestamp": 1513859,
+ "stop_block_start_pose": {
+  "x": -30.73,
+  "y": 30.73,
+  "point_status": "Real"
+ },
+ "stop_block_end_pose": {
+  "x": -30.73,
+  "y": 30.73,
+  "point_status": "Real"
+ },
+ "PDC_PSolt_attribute_Status": 1
+}
+
+
+{
+ "timestamp": "20250320172214731",
+ "pdc_psolt_id": 0,
+ "pcd_psolt_latreftype": "LatRefType_Unknow",
+ "pcd_psolt_slottype": "Perpendicular",
+ "obj1start_pos": {
+  "x": -10.37,
+  "y": -1.62,
+  "point_status": "Real"
+ },
+ "obj1end_pos": {
+  "x": -8.93,
+  "y": -1.8,
+  "point_status": "Real"
+ },
+ "slotobjstartpt_pos": {
+  "x": -9.61,
+  "y": -7.03,
+  "point_status": "Virtual"
+ },
+ "slotobjendpt_pos": {
+  "x": -5.64,
+  "y": -7.55,
+  "point_status": "Virtual"
+ },
+ "obj2start_pos": {
+  "x": -4.97,
+  "y": -2.32,
+  "point_status": "Virtual"
+ },
+ "obj2end_pos": {
+  "x": -4.97,
+  "y": -2.32,
+  "point_status": "Virtual"
+ },
+ "psolt_synctimestamp": 1513895,
+ "stop_block_start_pose": {
+  "x": -30.73,
+  "y": 30.73,
+  "point_status": "Real"
+ },
+ "stop_block_end_pose": {
+  "x": -30.73,
+  "y": 30.73,
+  "point_status": "Real"
+ },
+ "PDC_PSolt_attribute_Status": 1
+}
+
+
+{
+ "timestamp": "20250320172410692",
+ "pdc_psolt_id": 8,
+ "pcd_psolt_latreftype": "LatRefType_Unknow",
+ "pcd_psolt_slottype": "Perpendicular",
+ "obj1start_pos": {
+  "x": -12.43,
+  "y": -1.45,
+  "point_status": "Real"
+ },
+ "obj1end_pos": {
+  "x": -12.43,
+  "y": -1.45,
+  "point_status": "Real"
+ },
+ "slotobjstartpt_pos": {
+  "x": -12.03,
+  "y": -6.93,
+  "point_status": "Virtual"
+ },
+ "slotobjendpt_pos": {
+  "x": -8.77,
+  "y": -6.82,
+  "point_status": "Virtual"
+ },
+ "obj2start_pos": {
+  "x": -9.46,
+  "y": -1.34,
+  "point_status": "Virtual"
+ },
+ "obj2end_pos": {
+  "x": -9.46,
+  "y": -1.34,
+  "point_status": "Virtual"
+ },
+ "psolt_synctimestamp": 1530486,
+ "stop_block_start_pose": {
+  "x": -30.73,
+  "y": 30.73,
+  "point_status": "Real"
+ },
+ "stop_block_end_pose": {
+  "x": -30.73,
+  "y": 30.73,
+  "point_status": "Real"
+ },
+ "PDC_PSolt_attribute_Status": 2
+}
+
+
+{
+ "timestamp": "20250320172803840",
+ "pdc_psolt_id": 0,
+ "pcd_psolt_latreftype": "LatRefType_Unknow",
+ "pcd_psolt_slottype": "Parallel",
+ "obj1start_pos": {
+  "x": -11.43,
+  "y": 3.12,
+  "point_status": "Real"
+ },
+ "obj1end_pos": {
+  "x": -11.43,
+  "y": 3.12,
+  "point_status": "Real"
+ },
+ "slotobjstartpt_pos": {
+  "x": -11.42,
+  "y": 5.32,
+  "point_status": "Virtual"
+ },
+ "slotobjendpt_pos": {
+  "x": -4.47,
+  "y": 5.31,
+  "point_status": "Virtual"
+ },
+ "obj2start_pos": {
+  "x": -4.48,
+  "y": 3.11,
+  "point_status": "Virtual"
+ },
+ "obj2end_pos": {
+  "x": -4.48,
+  "y": 3.11,
+  "point_status": "Virtual"
+ },
+ "psolt_synctimestamp": 1557487,
+ "stop_block_start_pose": {
+  "x": -30.73,
+  "y": 30.73,
+  "point_status": "Real"
+ },
+ "stop_block_end_pose": {
+  "x": -30.73,
+  "y": 30.73,
+  "point_status": "Real"
+ },
+ "PDC_PSolt_attribute_Status": 2
+}
+
+
+{
+ "timestamp": "20250320173004994",
+ "pdc_psolt_id": 0,
+ "pcd_psolt_latreftype": "LatRefType_Unknow",
+ "pcd_psolt_slottype": "Perpendicular",
+ "obj1start_pos": {
+  "x": -3.72,
+  "y": -1.63,
+  "point_status": "Real"
+ },
+ "obj1end_pos": {
+  "x": -3.72,
+  "y": -1.63,
+  "point_status": "Real"
+ },
+ "slotobjstartpt_pos": {
+  "x": -3.16,
+  "y": -7.11,
+  "point_status": "Virtual"
+ },
+ "slotobjendpt_pos": {
+  "x": -1.27,
+  "y": -7.04,
+  "point_status": "Virtual"
+ },
+ "obj2start_pos": {
+  "x": -1.45,
+  "y": -1.54,
+  "point_status": "Virtual"
+ },
+ "obj2end_pos": {
+  "x": -1.45,
+  "y": -1.54,
+  "point_status": "Virtual"
+ },
+ "psolt_synctimestamp": 1572792,
+ "stop_block_start_pose": {
+  "x": -30.73,
+  "y": 30.73,
+  "point_status": "Real"
+ },
+ "stop_block_end_pose": {
+  "x": -30.73,
+  "y": 30.73,
+  "point_status": "Real"
+ },
+ "PDC_PSolt_attribute_Status": 2
+}
+
+
+{
+ "timestamp": "20250320173050791",
+ "pdc_psolt_id": 0,
+ "pcd_psolt_latreftype": "LatRefType_Unknow",
+ "pcd_psolt_slottype": "Perpendicular",
+ "obj1start_pos": {
+  "x": -3.77,
+  "y": -1.41,
+  "point_status": "Real"
+ },
+ "obj1end_pos": {
+  "x": -3.77,
+  "y": -1.41,
+  "point_status": "Real"
+ },
+ "slotobjstartpt_pos": {
+  "x": -3.9,
+  "y": -6.91,
+  "point_status": "Virtual"
+ },
+ "slotobjendpt_pos": {
+  "x": -0.91,
+  "y": -6.95,
+  "point_status": "Virtual"
+ },
+ "obj2start_pos": {
+  "x": -1.17,
+  "y": -1.44,
+  "point_status": "Virtual"
+ },
+ "obj2end_pos": {
+  "x": -1.17,
+  "y": -1.44,
+  "point_status": "Virtual"
+ },
+ "psolt_synctimestamp": 1577803,
+ "stop_block_start_pose": {
+  "x": -30.73,
+  "y": 30.73,
+  "point_status": "Real"
+ },
+ "stop_block_end_pose": {
+  "x": -30.73,
+  "y": 30.73,
+  "point_status": "Real"
+ },
+ "PDC_PSolt_attribute_Status": 2
+}
+
+
+{
+ "timestamp": "20250320173241295",
+ "pdc_psolt_id": 0,
+ "pcd_psolt_latreftype": "LatRefType_Unknow",
+ "pcd_psolt_slottype": "Perpendicular",
+ "obj1start_pos": {
+  "x": -8.03,
+  "y": -2.69,
+  "point_status": "Virtual"
+ },
+ "obj1end_pos": {
+  "x": -8.03,
+  "y": -2.69,
+  "point_status": "Virtual"
+ },
+ "slotobjstartpt_pos": {
+  "x": -8.21,
+  "y": -7.96,
+  "point_status": "Virtual"
+ },
+ "slotobjendpt_pos": {
+  "x": -4.22,
+  "y": -8.1,
+  "point_status": "Virtual"
+ },
+ "obj2start_pos": {
+  "x": -4.04,
+  "y": -2.83,
+  "point_status": "Real"
+ },
+ "obj2end_pos": {
+  "x": -1.84,
+  "y": -3.01,
+  "point_status": "Real"
+ },
+ "psolt_synctimestamp": 1589061,
+ "stop_block_start_pose": {
+  "x": -30.73,
+  "y": 30.73,
+  "point_status": "Real"
+ },
+ "stop_block_end_pose": {
+  "x": -30.73,
+  "y": 30.73,
+  "point_status": "Real"
+ },
+ "PDC_PSolt_attribute_Status": 1
+}
+
+
+{
+ "timestamp": "20250320173502778",
+ "pdc_psolt_id": 0,
+ "pcd_psolt_latreftype": "LatRefType_Unknow",
+ "pcd_psolt_slottype": "Perpendicular",
+ "obj1start_pos": {
+  "x": -2.54,
+  "y": -1.69,
+  "point_status": "Virtual"
+ },
+ "obj1end_pos": {
+  "x": -2.54,
+  "y": -1.69,
+  "point_status": "Virtual"
+ },
+ "slotobjstartpt_pos": {
+  "x": -2.38,
+  "y": -7.19,
+  "point_status": "Virtual"
+ },
+ "slotobjendpt_pos": {
+  "x": 0.65,
+  "y": -7.21,
+  "point_status": "Virtual"
+ },
+ "obj2start_pos": {
+  "x": 0.24,
+  "y": -1.71,
+  "point_status": "Real"
+ },
+ "obj2end_pos": {
+  "x": 0.24,
+  "y": -1.71,
+  "point_status": "Real"
+ },
+ "psolt_synctimestamp": 1608634,
+ "stop_block_start_pose": {
+  "x": -30.73,
+  "y": 30.73,
+  "point_status": "Real"
+ },
+ "stop_block_end_pose": {
+  "x": -30.73,
+  "y": 30.73,
+  "point_status": "Real"
+ },
+ "PDC_PSolt_attribute_Status": 2
+}
+
+
+{
+ "timestamp": "20250320173837532",
+ "pdc_psolt_id": 0,
+ "pcd_psolt_latreftype": "LatRefType_Unknow",
+ "pcd_psolt_slottype": "Perpendicular",
+ "obj1start_pos": {
+  "x": -1.79,
+  "y": 1.74,
+  "point_status": "Virtual"
+ },
+ "obj1end_pos": {
+  "x": -1.79,
+  "y": 1.74,
+  "point_status": "Virtual"
+ },
+ "slotobjstartpt_pos": {
+  "x": -1.58,
+  "y": 7.25,
+  "point_status": "Virtual"
+ },
+ "slotobjendpt_pos": {
+  "x": 1.17,
+  "y": 7.32,
+  "point_status": "Virtual"
+ },
+ "obj2start_pos": {
+  "x": 0.76,
+  "y": 1.81,
+  "point_status": "Real"
+ },
+ "obj2end_pos": {
+  "x": 0.76,
+  "y": 1.81,
+  "point_status": "Real"
+ },
+ "psolt_synctimestamp": 1636021,
+ "stop_block_start_pose": {
+  "x": -30.73,
+  "y": 30.73,
+  "point_status": "Real"
+ },
+ "stop_block_end_pose": {
+  "x": -30.73,
+  "y": 30.73,
+  "point_status": "Real"
+ },
+ "PDC_PSolt_attribute_Status": 2
+}
+
+
+{
+ "timestamp": "20250320174026025",
+ "pdc_psolt_id": 1,
+ "pcd_psolt_latreftype": "LatRefType_Unknow",
+ "pcd_psolt_slottype": "Perpendicular",
+ "obj1start_pos": {
+  "x": -3.75,
+  "y": 1.76,
+  "point_status": "Virtual"
+ },
+ "obj1end_pos": {
+  "x": -3.75,
+  "y": 1.76,
+  "point_status": "Virtual"
+ },
+ "slotobjstartpt_pos": {
+  "x": -3.44,
+  "y": 7.26,
+  "point_status": "Virtual"
+ },
+ "slotobjendpt_pos": {
+  "x": -1.32,
+  "y": 7.28,
+  "point_status": "Virtual"
+ },
+ "obj2start_pos": {
+  "x": -1.31,
+  "y": 1.78,
+  "point_status": "Real"
+ },
+ "obj2end_pos": {
+  "x": -1.31,
+  "y": 1.78,
+  "point_status": "Real"
+ },
+ "psolt_synctimestamp": 1646989,
+ "stop_block_start_pose": {
+  "x": -30.73,
+  "y": 30.73,
+  "point_status": "Real"
+ },
+ "stop_block_end_pose": {
+  "x": -30.73,
+  "y": 30.73,
+  "point_status": "Real"
+ },
+ "PDC_PSolt_attribute_Status": 2
+}
+
+
+{
+ "timestamp": "20250320174503827",
+ "pdc_psolt_id": 1,
+ "pcd_psolt_latreftype": "LatRefType_Unknow",
+ "pcd_psolt_slottype": "Perpendicular",
+ "obj1start_pos": {
+  "x": -4.14,
+  "y": 1.52,
+  "point_status": "Virtual"
+ },
+ "obj1end_pos": {
+  "x": -4.14,
+  "y": 1.52,
+  "point_status": "Virtual"
+ },
+ "slotobjstartpt_pos": {
+  "x": -4.14,
+  "y": 7.02,
+  "point_status": "Virtual"
+ },
+ "slotobjendpt_pos": {
+  "x": -1.37,
+  "y": 7.05,
+  "point_status": "Virtual"
+ },
+ "obj2start_pos": {
+  "x": -1.56,
+  "y": 1.55,
+  "point_status": "Real"
+ },
+ "obj2end_pos": {
+  "x": -1.56,
+  "y": 1.55,
+  "point_status": "Real"
+ },
+ "psolt_synctimestamp": 1695586,
+ "stop_block_start_pose": {
+  "x": -30.73,
+  "y": 30.73,
+  "point_status": "Real"
+ },
+ "stop_block_end_pose": {
+  "x": -30.73,
+  "y": 30.73,
+  "point_status": "Real"
+ },
+ "PDC_PSolt_attribute_Status": 2
+}
+
+
