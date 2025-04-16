@@ -12,6 +12,7 @@ from collections import defaultdict
 # import pyautogui
 # from PIL import ImageGrab
 import os
+# import sys
 
 fig = None
 json_data = []
@@ -94,6 +95,7 @@ def plot_coordinates(selected_timestamp):
     axis_buff = 2.0
     plt.xlim(min(min(x_coords) - axis_buff, -axis_buff), max(max(x_coords) + axis_buff, axis_buff))
     plt.ylim(min(min(y_coords) - axis_buff, -axis_buff), max(max(y_coords) + axis_buff, axis_buff))
+    plt.axis('equal')  # 设置缩放比例一致
 
     ax.set_xlabel("X")
     ax.set_ylabel("Y")
@@ -147,6 +149,9 @@ def open_json_file():
     global file_path
     # 获取当前路径并指定 data 目录
     current_dir = os.getcwd()  # 获取当前工作目录
+    # print(current_dir)
+    # script_path = sys.argv[0]
+    # print(script_path)
     data_dir = os.path.join(current_dir, 'data')  # 拼接成 data 目录路径
     file_path = filedialog.askopenfilename(
         title="选择 JSON 文件",
@@ -155,6 +160,7 @@ def open_json_file():
     )
 
     if file_path:
+        print(file_path)
         global json_data
         json_data = read_json_lines(file_path)
         timestamps = get_timestamps(json_data)
@@ -171,11 +177,18 @@ def open_json_file():
         dropdown.current(0)  # 默认选中第一个
         plot_coordinates(sorted_timestamps[0])
 
-def cycle_options():
+def cycle_options_next():
     global dropdown
     current_index = sorted_timestamps.index(dropdown.get())
     next_index = (current_index + 1) % len(sorted_timestamps)
     dropdown.set(sorted_timestamps[next_index])
+    on_timestamp_selected(None)
+
+def cycle_options_prev():
+    global dropdown
+    current_index = sorted_timestamps.index(dropdown.get())
+    prev_index = (current_index - 1) % len(sorted_timestamps)
+    dropdown.set(sorted_timestamps[prev_index])
     on_timestamp_selected(None)
 
 # 📌 读取 JSON 文件
@@ -202,8 +215,12 @@ dropdown.pack(pady=10)
 # dropdown.bind("<<ComboboxSelected>>", on_timestamp_selected)
 
 # 创建按钮并绑定到循环选项的函数
-button = tk.Button(root, text="Next", command=cycle_options)
-button.pack()
+button_prev = tk.Button(root, text="Prev", command=cycle_options_prev)
+button_prev.pack()
+# button_prev.grid(row=0, column=1, padx=10)
+button_next = tk.Button(root, text="Next", command=cycle_options_next)
+button_next.pack()
+# button_next.grid(row=0, column=0, padx=10)
 
 # 显示绘图的框架
 canvas_frame = tk.Frame(root)
