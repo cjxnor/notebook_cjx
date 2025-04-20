@@ -17,7 +17,7 @@ goal = (16, 16, 90)  # 终点 (x, y, θ)
 # 障碍物
 obstacles = {(5, y) for y in range(5, 15)} | {(x, 10) for x in range(6, 15)}
 
-# 车辆控制动作（前进1m、后退1m、转 +30°、转 -30°）
+# 车辆控制动作（前进1m、后退1m、原地转 +30°、原地转 -30°）
 actions = [(1, 0), (-1, 0), (0, 30), (0, -30)]  # 前进1m、后退1m、转 +30°、转 -30°
 
 # 判断是否细化栅格
@@ -37,6 +37,7 @@ def get_neighbors(state):
     res = FINE_RES if is_fine_grid(x, y) else COARSE_RES
     neighbors = []
 
+    # actions = [(1, 0), (-1, 0), (0, 30), (0, -30)]
     for forward, steer in actions:
         new_theta = (theta + steer) % 360
         rad = np.deg2rad(new_theta)
@@ -63,6 +64,7 @@ def hybrid_astar(start, goal):
         visited_nodes.append(current)
 
         if abs(current[0] - goal[0]) < 0.5 and abs(current[1] - goal[1]) < 0.5:  # 到达目标位置
+            came_from[goal] = current
             break
 
         for neighbor in get_neighbors(current):
@@ -81,6 +83,7 @@ def hybrid_astar(start, goal):
         node = came_from[node]
     path.append(start)
     path.reverse()
+    print(len(path))
     return path, visited_nodes
 
 # === 执行 Hybrid A* 并获取路径和访问节点 ===
@@ -110,26 +113,40 @@ ax.plot(*goal[:2], 'ro', label='Goal')
 # 动画元素
 visited_plot, = ax.plot([], [], 'o', color='orange', markersize=3, label='Visited')
 path_plot, = ax.plot([], [], color='green', linewidth=2, label='Path')
+frame_text = ax.text(0.05, 15.5, '', fontsize=12, color='black',
+                     bbox=dict(facecolor='lightyellow', edgecolor='gray', boxstyle='round,pad=0.3'))
 
 def init():
     visited_plot.set_data([], [])
     path_plot.set_data([], [])
-    return visited_plot, path_plot
+    frame_text.set_text('')
+    return visited_plot, path_plot, frame_text
 
 def update(frame):
-    if frame < len(visited_nodes):
-        nodes = visited_nodes[:frame]
+    if frame < len(visited_nodes)/100:
+        nodes = visited_nodes[:frame*100]
         if nodes:  # 防止空列表解包出错
             vx, vy, _ = zip(*nodes)
             visited_plot.set_data(vx, vy)
+            frame_text.set_text(f'Frame: {frame}')
     else:
         if path:  # 同样防止路径为空时报错
             px, py, _ = zip(*path)
             path_plot.set_data(px, py)
-    return visited_plot, path_plot
+    return visited_plot, path_plot, frame_text
 
-ani = animation.FuncAnimation(fig, update, frames=len(visited_nodes) + 30,
-                              init_func=init, interval=100, blit=True, repeat=False)
+print(len(visited_nodes))
+
+# fig,              # 要操作的图像
+# update,           # 每帧调用的函数
+# frames=...,       # 总帧数（决定动画播放时长）
+# init_func=init,   # 初始化函数（设置图像初始状态）
+# interval=30,      # 每帧之间的时间间隔（毫秒）
+# blit=True,        # 只重绘变化的部分，提升效率
+# repeat=False      # 动画播放一次就结束
+len_frame = int(len(visited_nodes)/100 + 30)
+ani = animation.FuncAnimation(fig, update, frames=len_frame,
+                              init_func=init, interval=0.1, blit=True, repeat=False)
 
 ax.legend()
 plt.show()

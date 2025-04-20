@@ -50,14 +50,18 @@ def plot_coordinates(selected_timestamp):
     
     # print(filtered_data[0]["obj1start_pos"]["x"])
     # # 提取坐标点
-    indexs = ["obj1start_pos", "obj1end_pos", "slotobjstartpt_pos", "slotobjendpt_pos", "obj2start_pos", "obj2end_pos", ]
+    indexs = ["obj1start_pos", "obj1end_pos", "slotobjstartpt_pos", "slotobjendpt_pos", 
+              "obj2start_pos", "obj2end_pos", "stop_block_start_pose", "stop_block_end_pose"]
     x_coords = [filtered_data[0][i]["x"] for i in indexs]
     y_coords = [filtered_data[0][i]["y"] for i in indexs]
     points_status = [filtered_data[0][i]["point_status"] for i in indexs]
 
+
     # slot属性
     global pdc_psolt_id
     pdc_psolt_id = filtered_data[0]["pdc_psolt_id"]
+    global psolt_synctimestamp
+    psolt_synctimestamp = filtered_data[0]["psolt_synctimestamp"]
     global pcd_psolt_latreftype
     pcd_psolt_latreftype = filtered_data[0]["pcd_psolt_latreftype"]
     global pcd_psolt_slottype
@@ -67,7 +71,11 @@ def plot_coordinates(selected_timestamp):
 
     global label
     label.config(text="")
-    label.config(text=f"pdc_psolt_id: {pdc_psolt_id}\npcd_psolt_latreftype: {pcd_psolt_latreftype}\npcd_psolt_slottype: {pcd_psolt_slottype}\nPDC_PSolt_attribute_Status: {PDC_PSolt_attribute_Status}")
+    label.config(text=(f"pdc_psolt_id: {pdc_psolt_id}\n"
+                       f"psolt_synctimestamp: {psolt_synctimestamp}\n"
+                       f"pcd_psolt_latreftype: {pcd_psolt_latreftype}\n"
+                       f"pcd_psolt_slottype: {pcd_psolt_slottype}\n"
+                       f"PDC_PSolt_attribute_Status: {PDC_PSolt_attribute_Status}"))
     # label.pack(side="left", padx=10, pady=10)
 
     # # 绘图
@@ -228,10 +236,18 @@ canvas_frame.pack(fill=tk.BOTH, expand=True)
 
 # 添加说明性文本
 pdc_psolt_id = ""
+psolt_synctimestamp = ""
 pcd_psolt_latreftype = ""
 pcd_psolt_slottype = ""
 PDC_PSolt_attribute_Status = ""
-label = tk.Label(root, text=f"pdc_psolt_id: {pdc_psolt_id}\npcd_psolt_latreftype: {pcd_psolt_latreftype}\npcd_psolt_slottype: {pcd_psolt_slottype}\nPDC_PSolt_attribute_Status: {PDC_PSolt_attribute_Status}",
+# label_str = ("pdc_psolt_id: {pdc_psolt_id}\npsolt_synctimestamp: {psolt_synctimestamp}\n"
+#                 "pcd_psolt_latreftype: {pcd_psolt_latreftype}\npcd_psolt_slottype: {pcd_psolt_slottype}\n"
+#                 "PDC_PSolt_attribute_Status: {PDC_PSolt_attribute_Status}")
+label = tk.Label(root, text=(f"pdc_psolt_id: {pdc_psolt_id}\n"
+                             f"psolt_synctimestamp: {psolt_synctimestamp}\n"
+                             f"pcd_psolt_latreftype: {pcd_psolt_latreftype}\n"
+                             f"pcd_psolt_slottype: {pcd_psolt_slottype}\n"
+                             f"PDC_PSolt_attribute_Status: {PDC_PSolt_attribute_Status}"),
                  font=("Arial", 12), justify="left", anchor="w")
 label.pack(side="left", padx=10, pady=10)   # 将标签放入窗口并显示
 
