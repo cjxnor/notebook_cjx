@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 # 在20250421_reeds_shepp_hmi.py的基础上增加手动输入起点和终点
+# python 3.12.7
 
 import tkinter as tk
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
@@ -63,7 +64,7 @@ class PathViewer:
         # self.start_entry = tk.Entry(frame, width=20)
         # self.start_entry.grid(row=0, column=1)
 
- # 起点输入框
+        # 起点输入框
         tk.Label(frame, text="Start x:").grid(row=0, column=0)
         tk.Entry(frame, textvariable=self.start_x, width=6).grid(row=0, column=1)
         tk.Label(frame, text="y:").grid(row=0, column=2)
@@ -93,17 +94,21 @@ class PathViewer:
         draw_button.grid(row=2, column=0)     # , columnspan=2, pady=5
 
         # 总长
-        self.label_L = tk.Label(master, text="", font=("Arial", 14))
-        self.label_L.pack()
+        # self.label_L = tk.Label(master, text="", font=("Arial", 14))
+        # self.label_L.pack()
 
-        self.info_text = tk.Text(master, height=6, width=80, font=("Courier", 10))
-        self.info_text.pack()
+        self.info_text = tk.Text(frame, height=6, width=60, font=("Courier", 10))
+        # self.info_text.pack()
+        self.info_text.grid(row=3, column=0, columnspan=10, padx=5, pady=5)
         # 配置左对齐标签
         self.info_text.tag_configure("left", justify="left")
 
         # self.index = (self.index + 1) % len(self.paths)  # 循环切换
-        self.button = tk.Button(master, text="Next", command=self.plot_next_path)
-        self.button.pack()
+        self.prev_button = tk.Button(frame, text="Prev", command=lambda:self.plot_next_path(-1))
+        self.prev_button.grid(row=4, column=0, padx=5, pady=5)
+        self.next_button = tk.Button(frame, text="Next", command=lambda:self.plot_next_path(1))
+        self.next_button.grid(row=4, column=1, padx=5, pady=5)
+        # self.button.pack()
 
         # self.max_x = max(x for path in paths for x in path.x)
         # self.min_x = min(x for path in paths for x in path.x)
@@ -112,11 +117,16 @@ class PathViewer:
 
         # self.plot_next_path()  # 初始显示第一条路径
 
-    def plot_next_path(self):
+    def plot_next_path(self, flag):
         self.ax.clear()
         if not self.paths:
             return
         
+        if flag > 0:
+            self.index = (self.index + 1) % len(self.paths)  # 向后循环切换
+        elif flag < 0:
+            self.index = (self.index - 1) % len(self.paths)  # 向前循环切换
+
         path = self.paths[self.index]
 
         xs = path.x
@@ -148,16 +158,32 @@ class PathViewer:
         max_y = max(y for y in ys)
         min_y = min(y for y in ys)
 
-        dx = np.cos(start[2]) * 0.1 * (max_x - min_x)  # 箭头长度 * 方向
-        dy = np.sin(start[2]) * 0.1 * (max_x - min_x)
-        hw = 0.05 * (max_y - min_y)
+        axis_buff = 5
+        max_x = max_x + axis_buff
+        min_x = min_x - axis_buff
+        max_y = max_y + axis_buff
+        min_y = min_y - axis_buff
+
+        self.ax.set_xlim(min_x, max_x)
+        self.ax.set_ylim(min_y, max_y)
+
+        delx = abs(max_x - min_x)
+        dely = abs(max_y - min_y)
+
+        al = 0.05 * delx  # 箭头线段长
+        hw = 0.5 * al   # 箭头宽度
+        hl = al         # 箭头长度
+
+        dx = np.cos(start[2]) * al  # 箭头长度 * 方向
+        dy = np.sin(start[2]) * al
+        # hw = 0.05 * (max_y - min_y)
         # hl = 1.5 * hw
-        self.ax.arrow(start[0], start[1], dx, dy, head_width=hw, head_length=0.3, 
+        self.ax.arrow(start[0], start[1], dx, dy, head_width=hw, head_length=hl, 
                       fc='green', ec='green')
 
-        dx = np.cos(goal[2]) * 0.1 * (max_x - min_x)  # 箭头长度 * 方向
-        dy = np.sin(goal[2]) * 0.1 * (max_x - min_x)
-        self.ax.arrow(goal[0], goal[1], dx, dy, head_width=hw, head_length=0.3, 
+        dx = np.cos(goal[2]) * al  # 箭头长度 * 方向
+        dy = np.sin(goal[2]) * al
+        self.ax.arrow(goal[0], goal[1], dx, dy, head_width=hw, head_length=hl, 
                       fc='red', ec='red')
 
         self.ax.plot(start[0], start[1], 'go', label='Start')
@@ -192,7 +218,7 @@ class PathViewer:
         # 把字符串 info 插入到文本末尾（此时已经清空，所以等于插入到开头）
         self.info_text.insert(tk.END, info, "left")
 
-        self.index = (self.index + 1) % len(self.paths)  # 循环切换
+        # self.index = (self.index + 1) % len(self.paths)  # 循环切换
 
     def calc_rs(self):
         self.ax.clear()
@@ -224,7 +250,7 @@ class PathViewer:
             
             self.paths = paths
             self.index = 0
-            self.plot_next_path()  # 初始显示第一条路径
+            self.plot_next_path(0)  # 初始显示第一条路径
         except:
             print("输入格式错误！请使用 x,y,theta 的格式")
 
@@ -243,6 +269,7 @@ class PathViewer:
             return  # 输入不合法，跳过
 
         self.ax.clear()
+        self.paths.clear()
         # self.ax.set_xlim(0, 100)
         # self.ax.set_ylim(0, 100)
         # self.ax.set_title("起点示意图")        
@@ -277,6 +304,7 @@ class PathViewer:
         self.ax.arrow(ex, ey, al * np.cos(np.deg2rad(et)), al * np.sin(np.deg2rad(et)), 
                       head_width=hw, head_length=hl, fc='red', ec='red')
 
+        self.ax.grid(True)
         self.ax.legend()
         self.canvas.draw()
 
