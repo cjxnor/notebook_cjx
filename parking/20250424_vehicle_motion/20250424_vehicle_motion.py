@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+import math
 import numpy as np
 import tkinter as tk
 from functools import partial
@@ -36,7 +37,15 @@ t = 10
 fps = 30
 center_x = 0
 center_y = 0
+# 后轴中心最小转弯半径
 radius = 5.68
+# 左转右后轮最小转弯半径
+radius_r_wheel = radius + W_2
+# 左转右后角点最小转弯半径
+radius_rr = math.sqrt(radius_r_wheel**2 + RB**2)
+# 左转右前角点最小转弯半径
+radius_fr = math.sqrt(radius_r_wheel**2 + RF**2)
+print(f"r_rw = {radius_r_wheel}, r_rr = {radius_rr}, r_fr = {radius_fr}")
 
 # 1.圆形路径
 for i in range(t * fps + 1):
@@ -47,32 +56,34 @@ for i in range(t * fps + 1):
     # vehicle_pose.append([vehicle_x, vehicle_y, vehicle_theta])
 
 # 2.挪库路径 前进0.5m，后退1.0m
-s_f = 1.0
-s_r = 1.0
+s_f = 0.5   # 前进长度
+s_r = 1.0   # 后退长度
 s_theta_f = s_f / radius
 s_theta_r = s_r / radius
-for i in range(0, 1):
-    # // 是除法只保留整数部分
-    start = 0                       # (t * fps + 1) // 3
-    end = (t * fps + 1) // 3        # (i + 1) * ((t * fps + 1) // 3)
-    # print(f"start:{start}, end:{end}")
-    for j in range(start, end):
-        angle = j * (s_theta_f / end)
-        vehicle_x = center_x + radius * np.cos(angle)
-        vehicle_y = center_y + radius * np.sin(angle)
-        vehicle_theta = (angle + np.pi / 2) % (2 * np.pi)  # 切线方向
-        vehicle_pose.append([vehicle_x, vehicle_y, vehicle_theta])
+# for i in range(0, 1):
+# // 是除法只保留整数部分
+start = 0                       # (t * fps + 1) // 3
+end = (t * fps + 1) // 3        # (i + 1) * ((t * fps + 1) // 3)
+# print(f"start:{start}, end:{end}")
+# 前进段
+for j in range(start, end):
+    angle = j * (s_theta_f / end)
+    vehicle_x = center_x + radius * np.cos(angle)
+    vehicle_y = center_y + radius * np.sin(angle)
+    vehicle_theta = (angle + np.pi / 2) % (2 * np.pi)  # 切线方向
+    vehicle_pose.append([vehicle_x, vehicle_y, vehicle_theta])
 
-    angle_temp = vehicle_pose[-1][2] - np.pi / 2 + np.pi
-    center_x = 2 * radius * np.cos(vehicle_pose[-1][2]- np.pi / 2)
-    center_y = 2 * radius * np.sin(vehicle_pose[-1][2]- np.pi / 2)
-    print(f"x:{center_x}, y:{center_y}")
-    for j in range(start, end):
-        angle = angle_temp + j * (s_theta_r / end)
-        vehicle_x = center_x + radius * np.cos(angle)
-        vehicle_y = center_y + radius * np.sin(angle)
-        vehicle_theta = (angle - np.pi / 2) % (2 * np.pi)  # 切线方向
-        vehicle_pose.append([vehicle_x, vehicle_y, vehicle_theta])
+# 后退段
+angle_temp = vehicle_pose[-1][2] - np.pi / 2 + np.pi
+center_x = 2 * radius * np.cos(vehicle_pose[-1][2]- np.pi / 2)
+center_y = 2 * radius * np.sin(vehicle_pose[-1][2]- np.pi / 2)
+# print(f"x:{center_x}, y:{center_y}")
+for j in range(start, end):
+    angle = angle_temp + j * (s_theta_r / end)
+    vehicle_x = center_x + radius * np.cos(angle)
+    vehicle_y = center_y + radius * np.sin(angle)
+    vehicle_theta = (angle - np.pi / 2) % (2 * np.pi)  # 切线反方向
+    vehicle_pose.append([vehicle_x, vehicle_y, vehicle_theta])
 
 
 # 车辆顶点计算（以后轴中心为参考）
