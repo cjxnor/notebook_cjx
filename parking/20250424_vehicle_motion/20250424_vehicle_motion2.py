@@ -96,7 +96,7 @@ for j in range(start, end):
     angle:当前路径段的圆心角度
     veh_pose:输出，保存当前路径段的姿态点集
 """
-def genarate_turn_path(pos, radius, is_fwd, angle, veh_pose):
+def genarate_left_path(pos, radius, is_fwd, angle, veh_pose):
     t = 5
     fps = 30
     veh_x = pos[0]
@@ -124,6 +124,34 @@ def genarate_turn_path(pos, radius, is_fwd, angle, veh_pose):
     print(len(veh_pose))
 
 
+def genarate_right_path(pos, radius, is_fwd, angle, veh_pose):
+    t = 5
+    fps = 30
+    veh_x = pos[0]
+    veh_y = pos[1]
+    veh_theta = pos[2]
+
+    if is_fwd:
+        x_o = veh_x + radius * math.cos(veh_theta - math.pi / 2)
+        y_o = veh_y + radius * math.sin(veh_theta - math.pi / 2)
+        ang_start = veh_theta + math.pi / 2
+    else:
+        x_o = veh_x + radius * math.cos(veh_theta + math.pi / 2)
+        y_o = veh_y + radius * math.sin(veh_theta + math.pi / 2)
+        ang_start = veh_theta - math.pi / 2
+
+    for i in range(t*fps + 1):
+        ang_i = ang_start - i * angle / (t*fps + 1)
+        vehicle_x = x_o + radius * np.cos(ang_i)
+        vehicle_y = y_o + radius * np.sin(ang_i)
+        if is_fwd:
+            vehicle_theta = (ang_i - np.pi / 2) % (2 * np.pi)
+        else:
+            vehicle_theta = (ang_i + np.pi / 2) % (2 * np.pi)
+        veh_pose.append([vehicle_x, vehicle_y, vehicle_theta])
+    print(len(veh_pose))
+
+
 vehicle_pose.append([0, 0, np.pi / 2])  # 车辆起始点
 for i in range(24):
     v_pose = [vehicle_pose[-1][0], vehicle_pose[-1][1], vehicle_pose[-1][2]]
@@ -134,7 +162,18 @@ for i in range(24):
         is_fwd = False
 
     angle = 1.5/5.68
-    genarate_turn_path(v_pose, 5.68, is_fwd, angle, vehicle_pose)
+    genarate_left_path(v_pose, 5.68, is_fwd, angle, vehicle_pose)
+
+# for i in range(24):
+#     v_pose = [vehicle_pose[-1][0], vehicle_pose[-1][1], vehicle_pose[-1][2]]
+
+#     if i % 2 == 0:
+#         is_fwd = True
+#     else:
+#         is_fwd = False
+
+#     angle = 1.5/5.68
+#     genarate_right_path(v_pose, 5.68, is_fwd, angle, vehicle_pose)
 
 # 车辆顶点计算（以后轴中心为参考）
 def get_car_corners(x, y, theta):
