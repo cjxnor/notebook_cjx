@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# 在20250421_reeds_shepp_hmi.py的基础上增加手动输入起点和终点
+# 在20250422_reeds_shepp_hmi2.py的基础上调用CurvesGenerator.reeds_shepp_test测试reeds_shepp曲线
 # python 3.12.7
 
 import tkinter as tk
@@ -15,7 +15,7 @@ import matplotlib.pyplot as plt
 sys.path.append(os.path.dirname(os.path.abspath(__file__)) +
                 "/../../../../MotionPlanning/")
 
-import CurvesGenerator.reeds_shepp as rs
+import CurvesGenerator.reeds_shepp_test as rs
 
 MAX_STEER = 8.0/15  # [rad] maximum steering angle
 WB = 2.716  # [m] Wheel base

@@ -12,7 +12,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 sys.path.append(os.path.dirname(os.path.abspath(__file__)) +
-                "/../../../MotionPlanning/")
+                "/../../../../MotionPlanning/")
 
 import CurvesGenerator.reeds_shepp as rs
 
