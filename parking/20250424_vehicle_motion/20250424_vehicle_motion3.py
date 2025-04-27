@@ -94,11 +94,11 @@ for j in range(start, end):
     # 生成一段挪库路径
     pos:x, y, theta 车辆当前的姿态
     radius:车辆转弯半径
-    is_fwd:是否是前进，当前两端，左转前进，右转后退
+    is_fwd:是否是前进，当前两段，左转前进，右转后退
     angle:需要向前/向后运动的圆心角度
     veh_pose:输出，保存当前路径段的姿态点集
 """
-def genarate_left_path(pos, radius, is_fwd, angle, veh_pose):
+def left_parkout_path(pos, radius, is_fwd, angle, veh_pose):
     t = 5
     fps = 30
     veh_x = pos[0]
@@ -125,7 +125,7 @@ def genarate_left_path(pos, radius, is_fwd, angle, veh_pose):
         veh_pose.append([vehicle_x, vehicle_y, vehicle_theta])
     # print(len(veh_pose))
 
-def genarate_left_path_one_step(pos, radius, is_fwd, angle, veh_pose):
+def left_parkout_path_one_step(pos, radius, is_fwd, angle, veh_pose):
     # t = 5
     # fps = 30
     veh_x = pos[0]
@@ -153,7 +153,7 @@ def genarate_left_path_one_step(pos, radius, is_fwd, angle, veh_pose):
     # print(len(veh_pose))
 
 
-def genarate_right_path(pos, radius, is_fwd, angle, veh_pose):
+def right_parkout_path(pos, radius, is_fwd, angle, veh_pose):
     t = 5
     fps = 30
     veh_x = pos[0]
@@ -180,7 +180,7 @@ def genarate_right_path(pos, radius, is_fwd, angle, veh_pose):
         veh_pose.append([vehicle_x, vehicle_y, vehicle_theta])
     # print(len(veh_pose))
 
-def genarate_right_path_one_step(pos, radius, is_fwd, angle, veh_pose):
+def right_parkout_path_one_step(pos, radius, is_fwd, angle, veh_pose):
     # t = 5
     # fps = 30
     veh_x = pos[0]
@@ -426,7 +426,7 @@ while True:
         break
 
     angle = 0.05/5.68
-    genarate_left_path_one_step(v_pose, 5.68, is_fwd, angle, vehicle_pose)
+    left_parkout_path_one_step(v_pose, 5.68, is_fwd, angle, vehicle_pose)
 
 print(f"vehicle_pose size : {len(vehicle_pose)}")
 
