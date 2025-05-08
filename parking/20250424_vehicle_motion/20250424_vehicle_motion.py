@@ -53,7 +53,7 @@ for i in range(t * fps + 1):
     vehicle_x = center_x + radius * np.cos(angle)
     vehicle_y = center_y + radius * np.sin(angle)
     vehicle_theta = (angle + np.pi / 2) % (2 * np.pi)  # 切线方向
-    # vehicle_pose.append([vehicle_x, vehicle_y, vehicle_theta])
+    vehicle_pose.append([vehicle_x, vehicle_y, vehicle_theta])
 
 # 2.挪库路径 前进0.5m，后退1.0m
 s_f = 0.5   # 前进长度
@@ -71,7 +71,7 @@ for j in range(start, end):
     vehicle_x = center_x + radius * np.cos(angle)
     vehicle_y = center_y + radius * np.sin(angle)
     vehicle_theta = (angle + np.pi / 2) % (2 * np.pi)  # 切线方向
-    vehicle_pose.append([vehicle_x, vehicle_y, vehicle_theta])
+    # vehicle_pose.append([vehicle_x, vehicle_y, vehicle_theta])
 
 # 后退段
 angle_temp = vehicle_pose[-1][2] - np.pi / 2 + np.pi
@@ -83,7 +83,7 @@ for j in range(start, end):
     vehicle_x = center_x + radius * np.cos(angle)
     vehicle_y = center_y + radius * np.sin(angle)
     vehicle_theta = (angle - np.pi / 2) % (2 * np.pi)  # 切线反方向
-    vehicle_pose.append([vehicle_x, vehicle_y, vehicle_theta])
+    # vehicle_pose.append([vehicle_x, vehicle_y, vehicle_theta])
 
 
 # 车辆顶点计算（以后轴中心为参考）
