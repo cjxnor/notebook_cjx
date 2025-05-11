@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# 在20250424_vehicle_motion3.py的基础上实现左侧水平车位泊出，并将车身摆正
+# 在20250424_vehicle_motion4.py的基础上实现多个左侧水平车位泊出，并将车身摆正，观察转弯圆心点
 import math
 import numpy as np
 import tkinter as tk
@@ -363,62 +363,34 @@ vehicle_pose.append([-ps_length + safe_buf + RB, -W_2, 0])
 # corners = get_car_corners(center_x, center_y, center_theta)
 # car_patch.set_xy(corners)
 
-"""
-is_fwd = True
-while True:
-    v_pose = [vehicle_pose[-1][0], vehicle_pose[-1][1], vehicle_pose[-1][2]]
-    veh_corners = get_car_corners(v_pose[0], v_pose[1], v_pose[2])
-    
-    if is_fwd:
-        # 前进判断右前角点是否安全
-        if(veh_corners[0][0] > -safe_buf):
-            is_fwd = not is_fwd
-    else:
-        # 后退判断左后角点是否安全
-        if(ps_length + veh_corners[2][0] < safe_buf):
-            is_fwd = not is_fwd
-    
-    # 右前角点出车位
-    if veh_corners[0][1] > 0 + safe_buf:
-        break
-
-    angle = 0.05/5.68
-    left_parkout_path_one_step(v_pose, 5.68, is_fwd, angle, vehicle_pose)
-"""
-
 angle = 0.05 / radius
-point_num = 60
-print(f"vehicle x = {vehicle_pose[-1][0]:.3f}, y = {vehicle_pose[-1][1]:.3f}, theta = {math.degrees(vehicle_pose[-1][2]):.3f}")
-for i in range(point_num):
-    v_pose = [vehicle_pose[-1][0], vehicle_pose[-1][1], vehicle_pose[-1][2]]
-    path_one_step(v_pose, radius, True, True, angle, vehicle_pose)
-print(f"vehicle x = {vehicle_pose[-1][0]:.3f}, y = {vehicle_pose[-1][1]:.3f}, theta = {math.degrees(vehicle_pose[-1][2]):.3f}")
+point_num_list = [10, 20, 30, 40, 50, 60, 70, 80, 90, 100, 110, 120]
+# point_num = 80
+for point_num in point_num_list:
+    vehicle_pose.clear()
+    vehicle_pose.append([-ps_length + safe_buf + RB, -W_2, 0])
+    # print(f"vehicle x = {vehicle_pose[-1][0]:.3f}, y = {vehicle_pose[-1][1]:.3f}, theta = {math.degrees(vehicle_pose[-1][2]):.3f}")
+    for i in range(point_num):
+        v_pose = [vehicle_pose[-1][0], vehicle_pose[-1][1], vehicle_pose[-1][2]]
+        path_one_step(v_pose, radius, True, True, angle, vehicle_pose)
+    # print(f"vehicle x = {vehicle_pose[-1][0]:.3f}, y = {vehicle_pose[-1][1]:.3f}, theta = {math.degrees(vehicle_pose[-1][2]):.3f}")
 
-for i in range(point_num):
-    v_pose = [vehicle_pose[-1][0], vehicle_pose[-1][1], vehicle_pose[-1][2]]
-    path_one_step(v_pose, radius, True, False, angle, vehicle_pose)
-print(f"vehicle x = {vehicle_pose[-1][0]:.3f}, y = {vehicle_pose[-1][1]:.3f}, theta = {math.degrees(vehicle_pose[-1][2]):.3f}")
+    for i in range(point_num):
+        v_pose = [vehicle_pose[-1][0], vehicle_pose[-1][1], vehicle_pose[-1][2]]
+        path_one_step(v_pose, radius, True, False, angle, vehicle_pose)
+    # print(f"vehicle x = {vehicle_pose[-1][0]:.3f}, y = {vehicle_pose[-1][1]:.3f}, theta = {math.degrees(vehicle_pose[-1][2]):.3f}")
 
 print(f"vehicle_pose size : {len(vehicle_pose)}")
 
-print(f"circle_center size = {len(circle_center_set)}")
+# print(f"circle_center size = {len(circle_center_set)}")
 for xo, yo in circle_center_set:
     ax.scatter(xo, yo, color='red', s=50)
-
-# for i in range(24):
-#     v_pose = [vehicle_pose[-1][0], vehicle_pose[-1][1], vehicle_pose[-1][2]]
-
-#     if i % 2 == 0:
-#         is_fwd = True
-#     else:
-#         is_fwd = False
-
-#     angle = 1.5/5.68
-#     genarate_right_path(v_pose, 5.68, is_fwd, angle, vehicle_pose)
+    ax.text(xo + 0.2, yo - 0.5, f"({xo}, {yo})", fontsize=8)
+    print(f"circle_center xo = {xo}, yo = {yo}")
 
 # 创建动画
 # repeat=False 取消循环播放
-anim = FuncAnimation(fig, partial(update, pose=vehicle_pose), frames=len(vehicle_pose), interval=1000/fps, blit=True, repeat=False)
+# anim = FuncAnimation(fig, partial(update, pose=vehicle_pose), frames=len(vehicle_pose), interval=1000/fps, blit=True, repeat=False)
 # 启动
 root.mainloop()
 # plt.title("Car Moving Along a Circular Trajectory")
