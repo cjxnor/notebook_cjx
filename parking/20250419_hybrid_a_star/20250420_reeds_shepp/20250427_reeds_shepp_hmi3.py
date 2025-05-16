@@ -27,7 +27,8 @@ start = None
 # goal = (2.0, 2.5, np.deg2rad(0))
 goal = None
 
-maxc = math.tan(MAX_STEER) / WB     # 最大曲率
+# maxc = math.tan(MAX_STEER) / WB     # 最大曲率
+maxc = 0.1
 
 paths = []
 # rs.calc_all_paths(start[0], start[1], start[2], goal[0], goal[1], goal[2], 

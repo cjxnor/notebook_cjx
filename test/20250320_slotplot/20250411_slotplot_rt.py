@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+# 绘制动图
 import json
 import matplotlib.pyplot as plt
 # 用字典存储相同坐标的数量
@@ -84,7 +85,8 @@ def plot_coordinates(selected_timestamp):
 
 # 📌 读取 JSON 文件
 current_dir = os.getcwd()  # 获取当前工作目录
-file_path = os.path.join(current_dir, 'data/20250418_pdc_slot_rt.json')  # 拼接成 data 目录路径
+print(f"pwd : {current_dir}")
+file_path = os.path.join(current_dir, 'test/20250320_slotplot/data/20250418_pdc_slot_rt.json')  # 拼接成 data 目录路径
 json_data = read_json_lines(file_path)
 timestamps = get_timestamps(json_data)
 # global sorted_timestamps
